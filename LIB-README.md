@@ -209,6 +209,6 @@ MIT © Moses Aweda
 
 ## Support
 
-- 📧 Email: your-email@example.com
-- 🐛 Issues: [GitHub Issues](https://github.com/MosesAweda)
-- 📖 Documentation: [GitHub Wiki](https://github.com/MosesAweda)`
+- 📧 Email: awedamoses@gmail.con
+- 🐛 Issues: [GitHub Issues](https://github.com/MosesAweda/React-Spreadsheet-Editor)
+- 📖 Documentation: [GitHub Wiki](https://github.com/MosesAweda/React-Spreadsheet-Editor)`
