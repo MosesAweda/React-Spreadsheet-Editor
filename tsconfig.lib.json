@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": false,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/components/Spreadsheet/**/*",
+    "src/lib/**/*",
+    "src/hooks/**/*",
+    "src/index.ts"
+  ],
+  "exclude": [
+    "src/pages/**/*",
+    "src/App.tsx",
+    "src/main.tsx",
+    "src/test/**/*",
+    "**/*.test.*",
+    "**/*.stories.*"
+  ]
+}

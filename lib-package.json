@@ -1,0 +1,60 @@
+{
+  "name": "react-spreadsheet-editor",
+  "version": "1.0.0",
+  "description": "A powerful, developer-friendly React spreadsheet component with Excel import/export, formulas, and styling",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "react",
+    "spreadsheet",
+    "excel",
+    "table",
+    "grid",
+    "formula",
+    "typescript",
+    "component"
+  ],
+  "author": "Moses Aweda <your-email@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/react-spreadsheet-editor.git"
+  },
+  "homepage": "https://github.com/yourusername/react-spreadsheet-editor#readme",
+  "bugs": {
+    "url": "https://github.com/yourusername/react-spreadsheet-editor/issues"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.2.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.462.0",
+    "sonner": "^1.7.4",
+    "tailwind-merge": "^2.6.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/react": "^18.3.23",
+    "@types/react-dom": "^18.3.7",
+    "rollup": "^4.9.6",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "typescript": "^5.8.3"
+  }
+}
