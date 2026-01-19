@@ -20,6 +20,8 @@ export interface SpreadsheetEditorProps {
   onExport?: (data: SpreadsheetData) => void;
   onImport?: (data: SpreadsheetData) => void;
   className?: string;
+  rowCount?: number;
+  columnCount?: number;
 }
 
 export function SpreadsheetEditor({
@@ -28,9 +30,11 @@ export function SpreadsheetEditor({
   onExport,
   onImport,
   className,
+  rowCount,
+  columnCount,
 }: SpreadsheetEditorProps) {
   const [data, setData] = useState<SpreadsheetData>(() => 
-    initialData ? computeAllCells(initialData) : createEmptySpreadsheet()
+    initialData ? computeAllCells(initialData) : createEmptySpreadsheet(rowCount, columnCount)
   );
   const [selectedCell, setSelectedCell] = useState<CellPosition | null>(null);
   const [editingCell, setEditingCell] = useState<CellPosition | null>(null);

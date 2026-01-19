@@ -68,6 +68,8 @@ export default App;
 | `onExport` | `(data: SpreadsheetData) => void` | Called when data is exported |
 | `onImport` | `(data: SpreadsheetData) => void` | Called when data is imported |
 | `className` | `string` | Additional CSS classes |
+| `rowCount` | `number` | Number of rows (default: 100) |
+| `columnCount` | `number` | Number of columns (default: 26) |
 
 ## Advanced Usage
 
@@ -82,6 +84,16 @@ initialData.cells['A1'] = { value: 'Hello' };
 initialData.cells['B1'] = { value: 'World' };
 
 <SpreadsheetEditor initialData={initialData} />
+```
+
+### Custom Grid Size
+
+```tsx
+<SpreadsheetEditor
+  rowCount={50}
+  columnCount={15}
+  onChange={handleChange}
+/>
 ```
 
 ### Custom Styling

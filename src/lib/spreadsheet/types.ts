@@ -75,12 +75,12 @@ export function parseCellId(cellId: string): CellPosition | null {
   return { row: rowNum, col };
 }
 
-export function createEmptySpreadsheet(): SpreadsheetData {
+export function createEmptySpreadsheet(rowCount?: number, columnCount?: number): SpreadsheetData {
   return {
     cells: {},
     columnWidths: {},
     rowHeights: {},
-    rowCount: DEFAULT_ROW_COUNT,
-    columnCount: DEFAULT_COLUMN_COUNT,
+    rowCount: rowCount || DEFAULT_ROW_COUNT,
+    columnCount: columnCount || DEFAULT_COLUMN_COUNT,
   };
 }

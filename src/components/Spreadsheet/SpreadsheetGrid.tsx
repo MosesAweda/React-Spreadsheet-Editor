@@ -126,7 +126,10 @@ export function SpreadsheetGrid({
           top: 0, 
           zIndex: 30, 
           width: 50, 
-          height: DEFAULT_ROW_HEIGHT 
+          height: DEFAULT_ROW_HEIGHT,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
         }}
       />
     );
@@ -146,6 +149,9 @@ export function SpreadsheetGrid({
             width, 
             minWidth: width, 
             height: DEFAULT_ROW_HEIGHT,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
             backgroundColor: isSelected ? 'var(--rse-bg-selected)' : undefined,
             color: isSelected ? 'var(--rse-primary)' : undefined
           }}
@@ -178,6 +184,14 @@ export function SpreadsheetGrid({
           className={`rse-grid-row-header ${isRowSelected ? 'selected' : ''}`}
           style={{ 
             height: rowHeight,
+            width: 50,
+            minWidth: 50,
+            position: 'sticky',
+            left: 0,
+            zIndex: 10,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
             backgroundColor: isRowSelected ? 'var(--rse-bg-selected)' : undefined,
             color: isRowSelected ? 'var(--rse-primary)' : undefined
           }}
