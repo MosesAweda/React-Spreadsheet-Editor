@@ -1,6 +1,6 @@
 {
  "name": "react-spreadsheet-editor",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A powerful React spreadsheet component with Excel import/export",
   "private": false,
   "type": "module",

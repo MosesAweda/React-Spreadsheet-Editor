@@ -15,7 +15,7 @@ cp README.md dist/
 # Publish to npm
 echo "Publishing to npm..."
 cd dist
-npm publish
+npm publish --access public
 
 # Clean up
 echo "Cleaning up..."

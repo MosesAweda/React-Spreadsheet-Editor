@@ -1,6 +1,6 @@
 {
   "name": "react-spreadsheet-editor",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A powerful, developer-friendly React spreadsheet component with Excel import/export, formulas, and styling",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -15,8 +15,7 @@
     "hooks/"
   ],
   "scripts": {
-    "build": "rollup -c",
-    "prepublishOnly": "npm run build"
+    "postinstall": "echo 'React Spreadsheet Editor installed successfully!'"
   },
   "keywords": [
     "react",
