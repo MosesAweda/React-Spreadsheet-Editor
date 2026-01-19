@@ -94,7 +94,8 @@ export function importExcel(file: File): Promise<SpreadsheetData> {
 }
 
 export function exportToExcel(data: SpreadsheetData, options: ExportOptions = {}): void {
-  const { filename = 'spreadsheet.xlsx', sheetName = 'Sheet1' } = options;
+  const timestamp = new Date().toISOString().slice(0, 10);
+  const { filename = `spreadsheet-${timestamp}.xlsx`, sheetName = 'Sheet1' } = options;
   
   const worksheet: XLSX.WorkSheet = {};
   
@@ -148,7 +149,15 @@ export function exportToExcel(data: SpreadsheetData, options: ExportOptions = {}
   const workbook = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(workbook, worksheet, sheetName);
   
-  XLSX.writeFile(workbook, filename);
+  // Use writeFile with proper options to avoid browser warnings
+  try {
+    XLSX.writeFile(workbook, filename, { 
+      bookType: 'xlsx',
+      type: 'binary'
+    });
+  } catch (error) {
+    console.error('Export failed:', error);
+  }
 }
 
 export function exportToJSON(data: SpreadsheetData): JSONExportData {
@@ -227,13 +236,22 @@ export function importFromJSON(jsonData: JSONExportData): SpreadsheetData {
 export function downloadJSON(data: SpreadsheetData, filename = 'spreadsheet.json'): void {
   const jsonData = exportToJSON(data);
   const blob = new Blob([JSON.stringify(jsonData, null, 2)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
   
+  // Create download link with proper attributes to avoid browser warnings
+  const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
   a.download = filename;
+  a.setAttribute('rel', 'noopener noreferrer');
+  a.setAttribute('target', '_blank');
+  
+  // Trigger download
   document.body.appendChild(a);
   a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+  
+  // Cleanup
+  setTimeout(() => {
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }, 100);
 }

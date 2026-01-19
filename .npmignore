@@ -1,43 +1,23 @@
-# Source files
-src/pages/
-src/App.tsx
-src/main.tsx
-src/test/
-src/App.css
-
 # Development files
-.vscode/
-.idea/
-*.log
-*.lock
+src/
+test/
+*.test.*
+*.spec.*
+.env*
 node_modules/
-coverage/
-
-# Build files (keep only dist)
-public/
-index.html
-vite.config.ts
-vitest.config.ts
-rollup.config.js
-tsconfig.*.json
-
-# Config files
-.eslintrc*
-.prettierrc*
-tailwind.config.ts
-postcss.config.js
-components.json
-
-# Git and CI
 .git/
-.github/
-.gitignore
 
-# Documentation (keep only README.md)
-docs/
-*.md
+# Build artifacts you don't need
+bun.lockb
+*.sh
+index.html
+tailwind.config.ts
+tsconfig.*.json
+vitest.config.ts
+components.json
+vite_react_shadcn_ts-0.0.0.tgz
+
+# Keep only essential files
+!dist/
 !README.md
-
-# Package files
-lib-package.json
-LIB-README.md
+!package.json

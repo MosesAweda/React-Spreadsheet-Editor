@@ -7,8 +7,7 @@ import {
   getColumnLabel,
   DEFAULT_COLUMN_WIDTH,
   DEFAULT_ROW_HEIGHT,
-} from '@/lib/spreadsheet/types';
-import { cn } from '@/lib/utils';
+} from '../../lib/spreadsheet/types';
 
 interface SpreadsheetGridProps {
   data: SpreadsheetData;
@@ -120,8 +119,15 @@ export function SpreadsheetGrid({
     headers.push(
       <div
         key="corner"
-        className="sticky left-0 top-0 z-30 w-[50px] bg-header border-r border-b border-cell-border"
-        style={{ height: DEFAULT_ROW_HEIGHT }}
+        className="rse-grid-header"
+        style={{ 
+          position: 'sticky', 
+          left: 0, 
+          top: 0, 
+          zIndex: 30, 
+          width: 50, 
+          height: DEFAULT_ROW_HEIGHT 
+        }}
       />
     );
     
@@ -132,15 +138,21 @@ export function SpreadsheetGrid({
       headers.push(
         <div
           key={`col-${col}`}
-          className={cn(
-            'sticky top-0 z-20 flex items-center justify-center border-r border-b border-cell-border bg-header text-header-foreground text-xs font-medium select-none relative',
-            isSelected && 'bg-primary/10 text-primary'
-          )}
-          style={{ width, minWidth: width, height: DEFAULT_ROW_HEIGHT }}
+          className={`rse-grid-header ${isSelected ? 'selected' : ''}`}
+          style={{ 
+            position: 'sticky',
+            top: 0,
+            zIndex: 20,
+            width, 
+            minWidth: width, 
+            height: DEFAULT_ROW_HEIGHT,
+            backgroundColor: isSelected ? 'var(--rse-bg-selected)' : undefined,
+            color: isSelected ? 'var(--rse-primary)' : undefined
+          }}
         >
           {getColumnLabel(col)}
           <div
-            className="absolute right-0 top-0 w-1 h-full cursor-col-resize hover:bg-primary/20 active:bg-primary/30"
+            className="rse-column-resizer"
             onMouseDown={(e) => handleResizeStart(e, col)}
           />
         </div>
@@ -163,11 +175,12 @@ export function SpreadsheetGrid({
       cells.push(
         <div
           key={`row-header-${row}`}
-          className={cn(
-            'sticky left-0 z-10 flex items-center justify-center w-[50px] border-r border-b border-cell-border bg-header text-header-foreground text-xs font-medium select-none',
-            isRowSelected && 'bg-primary/10 text-primary'
-          )}
-          style={{ height: rowHeight }}
+          className={`rse-grid-row-header ${isRowSelected ? 'selected' : ''}`}
+          style={{ 
+            height: rowHeight,
+            backgroundColor: isRowSelected ? 'var(--rse-bg-selected)' : undefined,
+            color: isRowSelected ? 'var(--rse-primary)' : undefined
+          }}
         >
           {row + 1}
         </div>
@@ -198,7 +211,7 @@ export function SpreadsheetGrid({
       }
       
       rows.push(
-        <div key={`row-${row}`} className="flex">
+        <div key={`row-${row}`} style={{ display: 'flex' }}>
           {cells}
         </div>
       );
@@ -210,11 +223,11 @@ export function SpreadsheetGrid({
   return (
     <div
       ref={containerRef}
-      className="flex-1 overflow-auto bg-cell"
+      className="rse-grid"
     >
-      <div className="inline-block min-w-full">
+      <div style={{ display: 'inline-block', minWidth: '100%' }}>
         {/* Header row */}
-        <div className="flex sticky top-0 z-20">
+        <div style={{ display: 'flex', position: 'sticky', top: 0, zIndex: 20 }}>
           {renderColumnHeaders()}
         </div>
         

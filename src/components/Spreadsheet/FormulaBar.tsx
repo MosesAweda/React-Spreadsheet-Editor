@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getCellId, CellPosition } from '@/lib/spreadsheet/types';
+import { getCellId, CellPosition } from '../../lib/spreadsheet/types';
 
 interface FormulaBarProps {
   selectedCell: CellPosition | null;
@@ -36,12 +36,12 @@ export function FormulaBar({
   const cellLabel = selectedCell ? getCellId(selectedCell.row, selectedCell.col) : '';
 
   return (
-    <div className="flex items-center border-b border-toolbar-border bg-formula">
-      <div className="flex items-center justify-center w-16 h-8 border-r border-toolbar-border font-mono text-xs text-muted-foreground font-medium">
+    <div className="rse-formula-bar">
+      <div className="rse-cell-ref">
         {cellLabel || '—'}
       </div>
-      <div className="flex items-center px-2 text-muted-foreground text-sm font-mono">
-        <span className="text-primary">ƒx</span>
+      <div style={{ color: 'var(--rse-primary)', fontFamily: 'monospace', fontSize: '14px' }}>
+        ƒx
       </div>
       <input
         type="text"
@@ -52,7 +52,7 @@ export function FormulaBar({
           onSubmit();
         }}
         onKeyDown={handleKeyDown}
-        className="flex-1 h-8 px-2 bg-transparent border-none outline-none text-sm font-mono focus:ring-0"
+        className="rse-formula-input"
         placeholder={selectedCell ? 'Enter value or formula (e.g., =SUM(A1:A10))' : 'Select a cell'}
         disabled={!selectedCell}
       />

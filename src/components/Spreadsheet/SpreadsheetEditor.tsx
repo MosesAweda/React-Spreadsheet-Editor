@@ -9,10 +9,10 @@ import {
   Cell,
   getCellId,
   createEmptySpreadsheet,
-} from '@/lib/spreadsheet/types';
-import { computeAllCells } from '@/lib/spreadsheet/formulas';
-import { importExcel, exportToExcel, downloadJSON } from '@/lib/spreadsheet/excelUtils';
-import { toast } from 'sonner';
+} from '../../lib/spreadsheet/types';
+import { computeAllCells } from '../../lib/spreadsheet/formulas';
+import { importExcel, exportToExcel, downloadJSON } from '../../lib/spreadsheet/excelUtils';
+import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 
 export interface SpreadsheetEditorProps {
   initialData?: SpreadsheetData;
@@ -211,23 +211,23 @@ export function SpreadsheetEditor({
       setHistoryIndex(0);
       onChange?.(computed);
       onImport?.(computed);
-      toast.success('Spreadsheet imported successfully');
+      console.log('Spreadsheet imported successfully');
     } catch (error) {
       console.error('Import error:', error);
-      toast.error('Failed to import file');
     }
   }, [onChange, onImport]);
 
   const handleExportExcel = useCallback(() => {
+    console.log('Exporting to Excel', data);
     exportToExcel(data);
     onExport?.(data);
-    toast.success('Exported as Excel');
+    console.log('Exported as Excel');
   }, [data, onExport]);
 
   const handleExportJSON = useCallback(() => {
     downloadJSON(data);
     onExport?.(data);
-    toast.success('Exported as JSON');
+    console.log('Exported as JSON');
   }, [data, onExport]);
 
   // Keyboard shortcuts
@@ -274,35 +274,35 @@ export function SpreadsheetEditor({
   }, [selectedCell, selectedCellData, handleStyleChange, handleUndo, handleRedo]);
 
   return (
-    <div className={`flex flex-col border border-border rounded-lg overflow-hidden bg-background ${className || ''}`}>
-      <SpreadsheetToolbar
-        currentStyle={selectedCellData?.style || {}}
-        onStyleChange={handleStyleChange}
-        onImport={handleImport}
-        onExportExcel={handleExportExcel}
-        onExportJSON={handleExportJSON}
-        onUndo={handleUndo}
-        onRedo={handleRedo}
-        canUndo={historyIndex > 0}
-        canRedo={historyIndex < history.length - 1}
-      />
-      <FormulaBar
-        selectedCell={selectedCell}
-        value={selectedCellData?.value || ''}
-        formula={selectedCellData?.formula}
-        onChange={handleFormulaChange}
-        onSubmit={handleFormulaSubmit}
-      />
-      <SpreadsheetGrid
-        data={data}
-        selectedCell={selectedCell}
-        editingCell={editingCell}
-        onSelectCell={setSelectedCell}
-        onStartEdit={setEditingCell}
-        onEndEdit={handleCellEdit}
-        onNavigate={handleNavigate}
-        onColumnResize={handleColumnResize}
-      />
+    <div className={`rse-spreadsheet ${className || ''}`}>
+        <SpreadsheetToolbar
+          currentStyle={selectedCellData?.style || {}}
+          onStyleChange={handleStyleChange}
+          onImport={handleImport}
+          onExportExcel={handleExportExcel}
+          onExportJSON={handleExportJSON}
+          onUndo={handleUndo}
+          onRedo={handleRedo}
+          canUndo={historyIndex > 0}
+          canRedo={historyIndex < history.length - 1}
+        />
+        <FormulaBar
+          selectedCell={selectedCell}
+          value={selectedCellData?.value || ''}
+          formula={selectedCellData?.formula}
+          onChange={handleFormulaChange}
+          onSubmit={handleFormulaSubmit}
+        />
+        <SpreadsheetGrid
+          data={data}
+          selectedCell={selectedCell}
+          editingCell={editingCell}
+          onSelectCell={setSelectedCell}
+          onStartEdit={setEditingCell}
+          onEndEdit={handleCellEdit}
+          onNavigate={handleNavigate}
+          onColumnResize={handleColumnResize}
+        />
     </div>
   );
 }

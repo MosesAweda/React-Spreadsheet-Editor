@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Cell, CellStyle, DEFAULT_COLUMN_WIDTH, DEFAULT_ROW_HEIGHT } from '@/lib/spreadsheet/types';
-import { cn } from '@/lib/utils';
+import { Cell, CellStyle, DEFAULT_COLUMN_WIDTH, DEFAULT_ROW_HEIGHT } from '../../lib/spreadsheet/types';
 
 interface SpreadsheetCellProps {
   cell: Cell | undefined;
@@ -77,25 +76,24 @@ export function SpreadsheetCell({
   const style = cell?.style || {};
   const displayValue = cell?.computedValue ?? cell?.value ?? '';
 
+  const getCellClasses = (cellStyle: CellStyle): string => {
+    const classes = ['rse-cell-content'];
+    if (cellStyle.bold) classes.push('rse-cell-bold');
+    if (cellStyle.italic) classes.push('rse-cell-italic');
+    if (cellStyle.underline) classes.push('rse-cell-underline');
+    if (cellStyle.strikethrough) classes.push('rse-cell-strikethrough');
+    if (cellStyle.textAlign) classes.push(`rse-cell-align-${cellStyle.textAlign}`);
+    return classes.join(' ');
+  };
+
   const getCellStyles = (cellStyle: CellStyle): React.CSSProperties => ({
-    fontWeight: cellStyle.bold ? 'bold' : undefined,
-    fontStyle: cellStyle.italic ? 'italic' : undefined,
-    textDecoration: [
-      cellStyle.underline ? 'underline' : '',
-      cellStyle.strikethrough ? 'line-through' : '',
-    ].filter(Boolean).join(' ') || undefined,
-    textAlign: cellStyle.textAlign || 'left',
     backgroundColor: cellStyle.backgroundColor,
     color: cellStyle.textColor,
   });
 
   return (
     <div
-      className={cn(
-        'relative border-r border-b border-cell-border overflow-hidden',
-        'focus:outline-none cursor-cell',
-        isSelected && 'ring-2 ring-cell-border-selected ring-inset z-10 bg-cell-selected'
-      )}
+      className={`rse-cell ${isSelected ? 'selected' : ''} ${isEditing ? 'editing' : ''}`}
       style={{
         width,
         height,
@@ -115,12 +113,12 @@ export function SpreadsheetCell({
           onChange={(e) => setEditValue(e.target.value)}
           onBlur={() => onEndEdit(editValue)}
           onKeyDown={handleKeyDown}
-          className="absolute inset-0 w-full h-full px-2 bg-cell text-sm outline-none border-2 border-primary font-mono"
+          className={getCellClasses(style)}
           style={getCellStyles(style)}
         />
       ) : (
         <div
-          className="absolute inset-0 px-2 flex items-center text-sm truncate font-mono"
+          className={getCellClasses(style)}
           style={getCellStyles(style)}
         >
           {String(displayValue)}
