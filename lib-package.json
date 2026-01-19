@@ -1,6 +1,6 @@
 {
   "name": "react-spreadsheet-editor",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "A powerful, developer-friendly React spreadsheet component with Excel import/export, formulas, and styling",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -26,7 +26,13 @@
     "grid",
     "formula",
     "typescript",
-    "component"
+    "component",
+    "import",
+    "export",
+    "xlsx",
+    "csv",
+    "data-grid",
+    "editor"
   ],
   "author": "Moses Aweda <awedamoses@gmail.com>",
   "license": "MIT",

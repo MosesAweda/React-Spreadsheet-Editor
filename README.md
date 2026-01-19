@@ -38,6 +38,8 @@ yarn add react-spreadsheet-editor
 bun add react-spreadsheet-editor
 ```
 
+**Note**: This package has no external dependencies beyond React. All styles are self-contained.
+
 ## Quick Start
 
 ```tsx
@@ -222,13 +224,13 @@ The spreadsheet supports a variety of built-in formulas:
 
 ## Styling Requirements
 
-The component includes pre-built styles. Simply import the CSS file:
+The component uses scoped CSS styles that are included in the package. Simply import the CSS file:
 
 ```tsx
 import 'react-spreadsheet-editor/styles.css';
 ```
 
-The styles are built with Tailwind CSS and include all necessary variables for both light and dark themes.
+The styles are self-contained and don't require Tailwind CSS or any external dependencies. They include CSS variables for both light and dark themes.
 
 ## Development
 
