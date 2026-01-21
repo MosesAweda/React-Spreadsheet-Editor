@@ -38,23 +38,25 @@ yarn add react-spreadsheet-editor
 bun add react-spreadsheet-editor
 ```
 
+**Note**: This package has no external dependencies beyond React. All styles are self-contained.
+
 ## Quick Start
 
 ```tsx
 import React from 'react';
 import { SpreadsheetEditor } from 'react-spreadsheet-editor';
-import 'react-spreadsheet-editor/dist/styles.css'; // Import styles
+import 'react-spreadsheet-editor/styles.css'; // Import styles
 
 function App() {
-  const handleChange = (data) => {
+  const handleChange = (data: any) => {
     console.log('Spreadsheet data changed:', data);
   };
 
-  const handleExport = (data) => {
+  const handleExport = (data: any) => {
     console.log('Exported data:', data);
   };
 
-  const handleImport = (data) => {
+  const handleImport = (data: any) => {
     console.log('Imported data:', data);
   };
 
@@ -81,6 +83,8 @@ export default App;
 | `onExport` | `(data: SpreadsheetData) => void` | Called when data is exported |
 | `onImport` | `(data: SpreadsheetData) => void` | Called when data is imported |
 | `className` | `string` | Additional CSS classes |
+| `rowCount` | `number` | Number of rows (default: 100) |
+| `columnCount` | `number` | Number of columns (default: 26) |
 
 ## Advanced Usage
 
@@ -95,6 +99,16 @@ initialData.cells['A1'] = { value: 'Hello' };
 initialData.cells['B1'] = { value: 'World' };
 
 <SpreadsheetEditor initialData={initialData} />
+```
+
+### Custom Grid Size
+
+```tsx
+<SpreadsheetEditor
+  rowCount={50}
+  columnCount={15}
+  onChange={handleChange}
+/>
 ```
 
 ### Custom Styling
@@ -210,18 +224,13 @@ The spreadsheet supports a variety of built-in formulas:
 
 ## Styling Requirements
 
-This component requires Tailwind CSS. If you're not using Tailwind, you can:
+The component uses scoped CSS styles that are included in the package. Simply import the CSS file:
 
-1. **Install Tailwind CSS** (recommended):
-```bash
-npm install tailwindcss
-```
-
-2. **Or use the included styles**:
 ```tsx
-import { styles } from 'react-spreadsheet-editor';
-// Inject styles into your app
+import 'react-spreadsheet-editor/styles.css';
 ```
+
+The styles are self-contained and don't require Tailwind CSS or any external dependencies. They include CSS variables for both light and dark themes.
 
 ## Development
 
@@ -341,5 +350,4 @@ Built with:
 - [Vite](https://vitejs.dev)
 - [TypeScript](https://www.typescriptlang.org)
 - [Tailwind CSS](https://tailwindcss.com)
-- [Shadcn/ui](https://ui.shadcn.com)
-- [Radix UI](https://www.radix-ui.com)
+- [Lucide React](https://lucide.dev) (for icons)

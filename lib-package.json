@@ -1,17 +1,21 @@
 {
   "name": "react-spreadsheet-editor",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "description": "A powerful, developer-friendly React spreadsheet component with Excel import/export, formulas, and styling",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist",
-    "README.md"
+    "*.js",
+    "*.d.ts",
+    "*.css",
+    "*.map",
+    "components/",
+    "lib/",
+    "hooks/"
   ],
   "scripts": {
-    "build": "rollup -c",
-    "prepublishOnly": "npm run build"
+    "postinstall": "echo 'React Spreadsheet Editor installed successfully!'"
   },
   "keywords": [
     "react",
@@ -21,29 +25,29 @@
     "grid",
     "formula",
     "typescript",
-    "component"
+    "component",
+    "import",
+    "export",
+    "xlsx",
+    "csv",
+    "data-grid",
+    "editor"
   ],
-  "author": "Moses Aweda <your-email@example.com>",
+  "author": "Moses Aweda <awedamoses@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/react-spreadsheet-editor.git"
+    "url": "https://github.com/MosesAweda/React-Spreadsheet-Editor.git"
   },
-  "homepage": "https://github.com/yourusername/react-spreadsheet-editor#readme",
+  "homepage": "https://github.com/MosesAweda/React-Spreadsheet-Editor#readme",
   "bugs": {
-    "url": "https://github.com/yourusername/react-spreadsheet-editor/issues"
+    "url": "https://github.com/MosesAweda/React-Spreadsheet-Editor/issues"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },
   "dependencies": {
-    "@radix-ui/react-slot": "^1.2.3",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "lucide-react": "^0.462.0",
-    "sonner": "^1.7.4",
-    "tailwind-merge": "^2.6.0",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {

@@ -1,7 +1,5 @@
-import { SpreadsheetEditor } from '@/components/Spreadsheet';
-import { SpreadsheetData, exportToJSON } from '@/components/Spreadsheet';
-import { toast } from 'sonner';
-import { FileSpreadsheet, Code, Package, ArrowRight, Download, Upload, Calculator, Type } from 'lucide-react';
+import { SpreadsheetEditor } from '../components/Spreadsheet';
+import { SpreadsheetData, exportToJSON } from '../components/Spreadsheet';
 
 const Index = () => {
   const handleImport = (data: SpreadsheetData) => {
@@ -18,30 +16,30 @@ const Index = () => {
   };
 
   const showJSONPreview = () => {
-    toast.info('Try the Export button → Export as JSON to see the data structure');
+    alert('Try the Export button → Export as JSON to see the data structure');
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div style={{ minHeight: '100vh', background: 'var(--rse-bg)', fontFamily: 'var(--rse-font)' }}>
       {/* Hero Section */}
-      <header className="border-b border-border">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-primary/10 rounded-lg">
-                <FileSpreadsheet className="h-6 w-6 text-primary" />
+      <header style={{ borderBottom: '1px solid var(--rse-border)' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '24px 16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div style={{ padding: '8px', background: 'var(--rse-bg-selected)', borderRadius: '8px' }}>
+                <span style={{ fontSize: '24px' }}>📊</span>
               </div>
               <div>
-                <h1 className="text-xl font-semibold text-foreground">React Spreadsheet</h1>
-                <p className="text-sm text-muted-foreground">Developer-friendly, npm-installable component</p>
+                <h1 style={{ fontSize: '20px', fontWeight: '600', color: 'var(--rse-text)', margin: 0 }}>React Spreadsheet</h1>
+                <p style={{ fontSize: '14px', color: 'var(--rse-text-muted)', margin: 0 }}>Developer-friendly, npm-installable component</p>
               </div>
             </div>
             <a 
               href="#" 
               onClick={showJSONPreview}
-              className="flex items-center gap-2 text-sm text-primary hover:underline"
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', color: 'var(--rse-primary)', textDecoration: 'none' }}
             >
-              <Code className="h-4 w-4" />
+              <span>💻</span>
               View JSON Output
             </a>
           </div>
@@ -49,23 +47,23 @@ const Index = () => {
       </header>
 
       {/* Features Bar */}
-      <div className="border-b border-border bg-secondary/30">
-        <div className="container mx-auto px-4 py-3">
-          <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Upload className="h-4 w-4 text-primary" />
+      <div style={{ borderBottom: '1px solid var(--rse-border)', background: 'var(--rse-bg-hover)' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '12px 16px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '24px', fontSize: '14px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--rse-text-muted)' }}>
+              <span>⬆️</span>
               <span>Excel Import</span>
             </div>
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Download className="h-4 w-4 text-primary" />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--rse-text-muted)' }}>
+              <span>⬇️</span>
               <span>Excel/JSON Export</span>
             </div>
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Calculator className="h-4 w-4 text-primary" />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--rse-text-muted)' }}>
+              <span>🧮</span>
               <span>Formulas (SUM, AVERAGE, etc.)</span>
             </div>
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Type className="h-4 w-4 text-primary" />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--rse-text-muted)' }}>
+              <span>✏️</span>
               <span>Text Styling</span>
             </div>
           </div>
@@ -73,27 +71,27 @@ const Index = () => {
       </div>
 
       {/* Spreadsheet */}
-      <main className="container mx-auto px-4 py-6">
+      <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '24px 16px' }}>
         <SpreadsheetEditor
           onChange={handleChange}
           onExport={handleExport}
           onImport={handleImport}
-          className="h-[calc(100vh-220px)] min-h-[500px] shadow-sm"
+          className="shadow-sm"
         />
       </main>
 
       {/* Usage Code Section */}
-      <section className="border-t border-border bg-secondary/20">
-        <div className="container mx-auto px-4 py-8">
-          <div className="flex items-center gap-2 mb-4">
-            <Package className="h-5 w-5 text-primary" />
-            <h2 className="text-lg font-semibold">Developer Usage</h2>
+      <section style={{ borderTop: '1px solid var(--rse-border)', background: 'var(--rse-bg-hover)' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '32px 16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
+            <span>📦</span>
+            <h2 style={{ fontSize: '18px', fontWeight: '600', margin: 0 }}>Developer Usage</h2>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-card border border-border rounded-lg p-4">
-              <h3 className="text-sm font-medium text-muted-foreground mb-3">Basic Usage</h3>
-              <pre className="text-sm font-mono bg-secondary/50 p-3 rounded overflow-x-auto">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '24px' }}>
+            <div style={{ background: 'var(--rse-bg)', border: '1px solid var(--rse-border)', borderRadius: '8px', padding: '16px' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: '500', color: 'var(--rse-text-muted)', marginBottom: '12px' }}>Basic Usage</h3>
+              <pre style={{ fontSize: '12px', fontFamily: 'monospace', background: 'var(--rse-bg-hover)', padding: '12px', borderRadius: '4px', overflowX: 'auto', margin: 0 }}>
 {`import { SpreadsheetEditor } from './components/Spreadsheet';
 
 function App() {
@@ -107,9 +105,9 @@ function App() {
               </pre>
             </div>
             
-            <div className="bg-card border border-border rounded-lg p-4">
-              <h3 className="text-sm font-medium text-muted-foreground mb-3">Export as JSON</h3>
-              <pre className="text-sm font-mono bg-secondary/50 p-3 rounded overflow-x-auto">
+            <div style={{ background: 'var(--rse-bg)', border: '1px solid var(--rse-border)', borderRadius: '8px', padding: '16px' }}>
+              <h3 style={{ fontSize: '14px', fontWeight: '500', color: 'var(--rse-text-muted)', marginBottom: '12px' }}>Export as JSON</h3>
+              <pre style={{ fontSize: '12px', fontFamily: 'monospace', background: 'var(--rse-bg-hover)', padding: '12px', borderRadius: '4px', overflowX: 'auto', margin: 0 }}>
 {`import { exportToJSON } from './components/Spreadsheet';
 
 // Get JSON for database storage
@@ -122,15 +120,15 @@ const jsonData = exportToJSON(spreadsheetData);
             </div>
           </div>
 
-          <div className="mt-6 text-center">
-            <p className="text-sm text-muted-foreground">
-              Supports formulas: <code className="bg-secondary px-1.5 py-0.5 rounded">SUM</code>, 
-              <code className="bg-secondary px-1.5 py-0.5 rounded ml-1">AVERAGE</code>, 
-              <code className="bg-secondary px-1.5 py-0.5 rounded ml-1">MIN</code>, 
-              <code className="bg-secondary px-1.5 py-0.5 rounded ml-1">MAX</code>, 
-              <code className="bg-secondary px-1.5 py-0.5 rounded ml-1">COUNT</code>, 
-              <code className="bg-secondary px-1.5 py-0.5 rounded ml-1">IF</code>, 
-              <code className="bg-secondary px-1.5 py-0.5 rounded ml-1">CONCAT</code> and more
+          <div style={{ marginTop: '24px', textAlign: 'center' }}>
+            <p style={{ fontSize: '14px', color: 'var(--rse-text-muted)', margin: 0 }}>
+              Supports formulas: <code style={{ background: 'var(--rse-bg-hover)', padding: '2px 6px', borderRadius: '4px' }}>SUM</code>, 
+              <code style={{ background: 'var(--rse-bg-hover)', padding: '2px 6px', borderRadius: '4px', marginLeft: '4px' }}>AVERAGE</code>, 
+              <code style={{ background: 'var(--rse-bg-hover)', padding: '2px 6px', borderRadius: '4px', marginLeft: '4px' }}>MIN</code>, 
+              <code style={{ background: 'var(--rse-bg-hover)', padding: '2px 6px', borderRadius: '4px', marginLeft: '4px' }}>MAX</code>, 
+              <code style={{ background: 'var(--rse-bg-hover)', padding: '2px 6px', borderRadius: '4px', marginLeft: '4px' }}>COUNT</code>, 
+              <code style={{ background: 'var(--rse-bg-hover)', padding: '2px 6px', borderRadius: '4px', marginLeft: '4px' }}>IF</code>, 
+              <code style={{ background: 'var(--rse-bg-hover)', padding: '2px 6px', borderRadius: '4px', marginLeft: '4px' }}>CONCAT</code> and more
             </p>
           </div>
         </div>
