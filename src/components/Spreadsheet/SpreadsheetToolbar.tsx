@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from '../ui/DropdownMenu';
 import { CellStyle } from '../../lib/spreadsheet/types';
+import { AlignCenter, AlignLeft, AlignRight, ArrowUp, Download, Upload } from 'lucide-react';
 
 interface SpreadsheetToolbarProps {
   currentStyle: CellStyle;
@@ -118,19 +119,20 @@ export function SpreadsheetToolbar({
 
       {/* Alignment */}
       <ToolbarButton
-        icon={<span>⬅</span>}
+        icon={<><AlignLeft /></>}
         label="Align Left"
         active={currentStyle.textAlign === 'left'}
         onClick={() => onStyleChange({ textAlign: 'left' })}
       />
       <ToolbarButton
-        icon={<span>↔</span>}
+        icon={<><AlignCenter /></>}
         label="Align Center"
         active={currentStyle.textAlign === 'center'}
         onClick={() => onStyleChange({ textAlign: 'center' })}
       />
+    
       <ToolbarButton
-        icon={<span>➡</span>}
+        icon={<><AlignRight /></>}
         label="Align Right"
         active={currentStyle.textAlign === 'right'}
         onClick={() => onStyleChange({ textAlign: 'right' })}
@@ -154,7 +156,7 @@ export function SpreadsheetToolbar({
             className="rse-import-btn"
             onClick={() => fileInputRef.current?.click()}
           >
-            <span>⬆️</span>
+            <span><Download className='w-4 h-4' /></span>
             <span>Import</span>
           </Button>
         </TooltipTrigger>
@@ -165,7 +167,7 @@ export function SpreadsheetToolbar({
       <DropdownMenu>
         <DropdownMenuTrigger>
           <Button variant="outline" size="sm" className="rse-export-btn">
-            <span>⬇️</span>
+            <span><Upload className='w-4 h-4' /></span>
             <span>Export</span>
           </Button>
         </DropdownMenuTrigger>

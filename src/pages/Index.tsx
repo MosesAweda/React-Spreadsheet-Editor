@@ -1,5 +1,6 @@
 import { SpreadsheetEditor } from '../components/Spreadsheet';
 import { SpreadsheetData, exportToJSON } from '../components/Spreadsheet';
+import { BarChart3, Code, Upload, Download, Calculator, PenTool, Package } from 'lucide-react';
 
 const Index = () => {
   const handleImport = (data: SpreadsheetData) => {
@@ -27,7 +28,7 @@ const Index = () => {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <div style={{ padding: '8px', background: 'var(--rse-bg-selected)', borderRadius: '8px' }}>
-                <span style={{ fontSize: '24px' }}>📊</span>
+                <BarChart3 size={24} color="var(--rse-text)" />
               </div>
               <div>
                 <h1 style={{ fontSize: '20px', fontWeight: '600', color: 'var(--rse-text)', margin: 0 }}>React Spreadsheet</h1>
@@ -39,7 +40,7 @@ const Index = () => {
               onClick={showJSONPreview}
               style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', color: 'var(--rse-primary)', textDecoration: 'none' }}
             >
-              <span>💻</span>
+              <Code size={18} />
               View JSON Output
             </a>
           </div>
@@ -51,19 +52,19 @@ const Index = () => {
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '12px 16px' }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '24px', fontSize: '14px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--rse-text-muted)' }}>
-              <span>⬆️</span>
+              <Upload size={16} />
               <span>Excel Import</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--rse-text-muted)' }}>
-              <span>⬇️</span>
+              <Download size={16} />
               <span>Excel/JSON Export</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--rse-text-muted)' }}>
-              <span>🧮</span>
+              <Calculator size={16} />
               <span>Formulas (SUM, AVERAGE, etc.)</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--rse-text-muted)' }}>
-              <span>✏️</span>
+              <PenTool size={16} />
               <span>Text Styling</span>
             </div>
           </div>
@@ -84,7 +85,7 @@ const Index = () => {
       <section style={{ borderTop: '1px solid var(--rse-border)', background: 'var(--rse-bg-hover)' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '32px 16px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-            <span>📦</span>
+            <Package size={20} />
             <h2 style={{ fontSize: '18px', fontWeight: '600', margin: 0 }}>Developer Usage</h2>
           </div>
           
